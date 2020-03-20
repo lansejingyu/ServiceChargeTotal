@@ -28,6 +28,7 @@ def KeyValues(response):
 	print("实际销售单价：",response.json()['data']['fskuPrice'])
 	print("数量：",response.json()['data']['fskuNum'])
 	print("服务费：",response.json()['data']['serviceCharge'])
+	print("优惠：",response.json()['data']['skuDiscountAmount'])
 	print("服务费单位(1-元，2-百分比)：",response.json()['data']['fserviceChargeUnit'])  #1-元，2-百分比
 
 def Blanklines():     #打印一行空白行
@@ -62,35 +63,24 @@ def JudgeOrderNo():                                #-----从输入联盟订单�
 		# print("实际销售单价：",response.json()['data']['fskuPrice'])
 		# print("数量：",response.json()['data']['fskuNum'])
 		# print("服务费：",response.json()['data']['serviceCharge'])
+		# print("优惠：",response.json()['data']['skuDiscountAmount'])
 		# print("服务费单位(1-元，2-百分比)：",response.json()['data']['fserviceChargeUnit'])  #1-元，2-百分比
 		KeyValues(response)
-		serviceChargeTotal = response.json()['data']['serviceCharge']-(response.json()['data']['fskuSalePrice'] - response.json()['data']['fskuPrice'])*response.json()['data']['fskuNum']
+		serviceChargeTotal = (response.json()['data']['serviceCharge']-(response.json()['data']['fskuSalePrice'] - response.json()['data']['fskuPrice']))*response.json()['data']['fskuNum'] - response.json()['data']['skuDiscountAmount']
 		print("服务费总额：",decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
 
 		JudgeOrderNo()
 
-	elif OrderNo == response.json()['data']['fid'] and response.json()['data']['fserviceChargeUnit'] ==2 and response.json()['data']['fskuPrice'] > response.json()['data']['fskuSalePrice']:
+	elif OrderNo == response.json()['data']['fid'] and response.json()['data']['fserviceChargeUnit'] ==2 :
 		# print("联盟销售单价:",response.json()['data']['fskuSalePrice'])
 		# print("实际销售单价：",response.json()['data']['fskuPrice'])
 		# print("数量：",response.json()['data']['fskuNum'])
 		# print("服务费：",response.json()['data']['serviceCharge'])
+		# print("优惠：",response.json()['data']['skuDiscountAmount'])
 		# print("服务费单位(1-元，2-百分比)：",response.json()['data']['fserviceChargeUnit'])  #1-元，2-百分比
 		KeyValues(response)
-		serviceChargeTotal = response.json()['data']['fskuSalePrice']*response.json()['data']['fskuNum']*response.json()['data']['serviceCharge']*0.01+(response.json()['data']['fskuPrice']-response.json()['data']['fskuSalePrice'])*response.json()['data']['fskuNum']
-		print("服务费总额：",decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
-		Blanklines()
-
-		JudgeOrderNo()
-
-	elif OrderNo == response.json()['data']['fid'] and response.json()['data']['fserviceChargeUnit'] ==2 and response.json()['data']['fskuPrice'] < response.json()['data']['fskuSalePrice']:
-		# print("联盟销售单价:",response.json()['data']['fskuSalePrice'])
-		# print("实际销售单价：",response.json()['data']['fskuPrice'])
-		# print("数量：",response.json()['data']['fskuNum'])
-		# print("服务费：",response.json()['data']['serviceCharge'])
-		# print("服务费单位(1-元，2-百分比)：",response.json()['data']['fserviceChargeUnit'])  #1-元，2-百分比
-		KeyValues(response)
-		serviceChargeTotal = response.json()['data']['fskuSalePrice']*response.json()['data']['fskuNum']*response.json()['data']['serviceCharge']*0.01-(response.json()['data']['fskuPrice']-response.json()['data']['fskuSalePrice'])*response.json()['data']['fskuNum']
+		serviceChargeTotal = response.json()['data']['fskuSalePrice'] * response.json()['data']['fskuNum'] * response.json()['data']['serviceCharge'] * 0.01 + (response.json()['data']['fskuPrice'] - response.json()['data']['fskuSalePrice']) * response.json()['data']['fskuNum'] - response.json()['data']['skuDiscountAmount']
 		print("服务费总额：",decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
 
