@@ -1,18 +1,20 @@
 # -*- coding:utf-8 -*-
 import requests
 # from denglu import token
-import decimal
+import decimal  #用于十进制数学计算，更接近我们计算结果。
 
+
+
+#----------登录，获取token------------
 url = "http://192.168.2.127:8082/league/admin/login"
 payload = {'username': 'admin',
 		   'password': 'HGBnGUVR1HvaWkkniwVMvg=='}
-files = [
 
-]
 headers = {
 	'Content-Type': 'application/x-www-form-urlencoded	'
 }
-response = requests.request("POST", url, headers=headers, data = payload, files = files)
+
+response = requests.request("POST", url, headers=headers, data = payload)
 
 # print(response.text.encode('utf8'))
 # print(response.json())
