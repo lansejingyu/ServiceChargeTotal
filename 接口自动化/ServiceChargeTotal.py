@@ -35,7 +35,6 @@ def JudgeOrderNo():                                #-----从输入联盟订单�
 	OrderNo = input("请输入要计算的联盟订单号：")
 
 	url = "http://192.168.2.127:8082/league/order/orderDetail?orderNo=" + OrderNo
-	# print(url)
 
 	headers = {
 		'Content-Type': 'application/json',
@@ -47,7 +46,7 @@ def JudgeOrderNo():                                #-----从输入联盟订单�
 
 	if	response.json()['code'] != "200" :
 		print("服务器错误")
-		Blanklines()   #打印一行空白行
+		Blanklines()
 		JudgeOrderNo()
 
 	elif response.json()['data'] == {}:
