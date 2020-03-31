@@ -24,6 +24,8 @@ def KeyValues(response):  # 将重复打印的内容，定义一个函数
 	print("服务费：", response.json()['data']['serviceCharge'])
 	print("优惠：", response.json()['data']['skuDiscountAmount'])
 	print("服务费单位(1-元，2-百分比)：", response.json()['data']['fserviceChargeUnit'])  # 1-元，2-百分比
+	Blanklines()
+	print("计算服务费总额中...")
 
 
 def Blanklines():  # 打印一行空白行，定义一个函数
