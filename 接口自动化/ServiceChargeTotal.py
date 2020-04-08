@@ -50,7 +50,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 		JudgeOrderNo()
 
 	elif response.json()['data'] == {}:
-		print("响应内容为空")
+		print("未找到该联盟订单信息")
 		Blanklines()
 		JudgeOrderNo()
 
