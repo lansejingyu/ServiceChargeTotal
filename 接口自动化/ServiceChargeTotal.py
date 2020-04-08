@@ -5,7 +5,7 @@ import decimal  # 用于十进制数学计算，更接近我们手动计算结�
 # ----------登录，获取token------------
 url = "http://192.168.2.127:8082/league/admin/login"
 payload = {'username': 'admin',
-		   'password': 'HGBnGUVR1HvaWkkniwVMvg=='}
+		   'password': 'N5yswN5kdP2zYrIRJv4HiQ=='}
 
 headers = {
 	'Content-Type': 'application/x-www-form-urlencoded	'
