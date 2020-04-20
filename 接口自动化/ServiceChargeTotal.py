@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-#遵循代码PEP8规范
+# 遵循代码PEP8规范
 
 import requests
 import decimal  # 用于十进制数学计算，更接近我们手动计算结果。
