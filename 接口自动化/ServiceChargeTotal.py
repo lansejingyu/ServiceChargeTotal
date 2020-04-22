@@ -79,6 +79,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 		Blanklines()
 
 		JudgeOrderNo()
+		JudgeOrderNo()
 
 
-JudgeOrderNo()1
+JudgeOrderNo()
