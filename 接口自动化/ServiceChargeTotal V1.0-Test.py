@@ -18,7 +18,7 @@ response = requests.request("POST", url, headers=headers, data=payload)
 token = response.json()["data"]["accessToken"]
 
 
-# ---------查询订单----------------
+# ---------查询订单详情----------------
 def KeyValues(response):  # 将重复打印的内容，定义一个函数
 	print("联盟销售单价:", response.json()['data']['fskuSalePrice'])
 	print("实际销售单价：", response.json()['data']['fskuPrice'])
