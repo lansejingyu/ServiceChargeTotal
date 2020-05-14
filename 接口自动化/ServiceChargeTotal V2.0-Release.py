@@ -5,16 +5,12 @@ import requests
 import decimal  # 用于十进制数学计算，更接近我们手动计算结果。
 
 # ----------登录，获取token------------
-url = "http://192.168.2.127:8082/league/admin/login"
+url = "http://api.league.linkiebuy.com/league/admin/login"
 payload = {'username': 'admin',
-		   'password': 'N5yswN5kdP2zYrIRJv4HiQ=='}
-
+		   'password': 'iY10arHx1GQGet8fc3OZzlxKwjcsKPe2XNRKGhhN644='}
 headers = {
-	'Content-Type': 'application/x-www-form-urlencoded	'
-}
-
+	'Content-Type': 'application/x-www-form-urlencoded	'}
 response = requests.request("POST", url, headers=headers, data=payload)
-
 token = response.json()["data"]["accessToken"]
 
 
@@ -37,7 +33,7 @@ def Blanklines():  # 打印一行空白行，定义一个函数
 def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，定义一个函数，可重复调用/
 	OrderNo = input("请输入要计算的联盟订单号：")
 
-	url = "http://192.168.2.127:8082/league/order/orderDetail?orderNo=" + OrderNo
+	url = "http://api.league.linkiebuy.com/league/order/orderDetail?orderNo=" + OrderNo
 
 	headers = {
 		'Content-Type': 'application/json',
@@ -55,3 +51,31 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 		print("未找到该联盟订单信息")
 		Blanklines()
 		JudgeOrderNo()
+
+	elif OrderNo == response.json()['data']['fid'] and response.json()['data']['fserviceChargeUnit'] == 1:
+		KeyValues(response)
+		# 计算公式  服务费总额：serviceChargeTotal
+		serviceChargeTotal = (response.json()['data']['serviceCharge'] - (
+				response.json()['data']['fskuSalePrice'] - response.json()['data']['fskuPrice'])) * \
+							 response.json()['data']['fskuNum'] - response.json()['data']['skuDiscountAmount']
+		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
+		Blanklines()
+
+		JudgeOrderNo()
+
+	elif OrderNo == response.json()['data']['fid'] and response.json()['data']['fserviceChargeUnit'] == 2:
+		KeyValues(response)
+		# 计算公式  服务费总额：serviceChargeTotal
+		serviceChargeTotal = response.json()['data']['fskuSalePrice'] * response.json()['data']['fskuNum'] * \
+							 response.json()['data']['serviceCharge'] * 0.01 + (
+									 response.json()['data']['fskuPrice'] - response.json()['data'][
+								 'fskuSalePrice']) * response.json()['data']['fskuNum'] - response.json()['data'][
+								 'skuDiscountAmount']
+		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
+		Blanklines()
+
+		JudgeOrderNo()
+
+
+JudgeOrderNo()
+1
