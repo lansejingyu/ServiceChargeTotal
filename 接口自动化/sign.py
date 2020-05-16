@@ -18,7 +18,8 @@ for i in sorted(dictA):
 stringSignTemp = stringA + "key=82a9ad9c048a4aa19dffa1c2506cdab4"
 print(stringSignTemp.lower())  #全部转小写
 
+
+# stringSignTemp = "category_parent_id=0&method=synccategory&out_trade_no=otdd55046012f04a0d9e4d88fefc073c431&version=1.0&key=82a9ad9c048a4aa19dffa1c2506cdab4"
 sign = hashlib.md5()
-sign.update(stringSignTemp.encode(encoding='utf-8'))
-resuil = sign.hexdigest()
+sign.update(stringSignTemp.lower().encode(encoding='utf-8'))
 print("sign:",sign.hexdigest())
