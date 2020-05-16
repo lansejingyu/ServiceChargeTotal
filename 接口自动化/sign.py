@@ -12,14 +12,12 @@ dictA = ast.literal_eval(body)
 stringA = ""
 for i in sorted(dictA):
 	# print(i + "=" + str(dictA[i]))
-	stringA = stringA +i + "=" + str(dictA[i]) +"&"
+	stringA = stringA + i + "=" + str(dictA[i]) + "&"
 
 # print(stringA + "key=82a9ad9c048a4aa19dffa1c2506cdab4")
 stringSignTemp = stringA + "key=82a9ad9c048a4aa19dffa1c2506cdab4"
-print(stringSignTemp.lower())  #全部转小写
+print(stringSignTemp.lower())  # 全部转小写
 
-
-# stringSignTemp = "category_parent_id=0&method=synccategory&out_trade_no=otdd55046012f04a0d9e4d88fefc073c431&version=1.0&key=82a9ad9c048a4aa19dffa1c2506cdab4"
 sign = hashlib.md5()
 sign.update(stringSignTemp.lower().encode(encoding='utf-8'))
-print("sign:",sign.hexdigest())
+print("sign:", sign.hexdigest())

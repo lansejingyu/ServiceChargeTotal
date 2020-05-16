@@ -94,7 +94,8 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 		Blanklines()
 		JudgeOrderNo()
 
-	elif OrderNo == json['data']['fid'] and json['data']['fabbreviationName'] != '自营社交' and json['data']['fserviceChargeUnit'] == 1:
+	elif OrderNo == json['data']['fid'] and json['data']['fabbreviationName'] != '自营社交' and json['data'][
+		'fserviceChargeUnit'] == 1:
 		KeyValues(response)
 		# 计算公式  服务费总额：serviceChargeTotal
 		serviceChargeTotal = (json['data']['serviceCharge'] - (
