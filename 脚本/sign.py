@@ -21,5 +21,3 @@ print(stringSignTemp.lower())  # 全部转小写
 sign = hashlib.md5()
 sign.update(stringSignTemp.lower().encode(encoding='utf-8'))
 print("sign:", sign.hexdigest())
-
-123456
