@@ -37,7 +37,7 @@ def Blanklines():  # 打印一行空白行，定义一个函数
 def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，定义一个函数，可重复调用/
 	OrderNo = input("请输入要计算的联盟订单号：")
 
-	url = "http://192.168.2.127:8082/league/order/orderDetail?orderNo=" + OrderNo
+	url = "http://api.test.league.xy/league/order/orderDetail?orderNo=" + OrderNo
 
 	headers = {
 		'Content-Type': 'application/json',
