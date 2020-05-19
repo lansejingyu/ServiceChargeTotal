@@ -39,7 +39,7 @@ def Blanklines():  # 打印一行空白行，定义一个函数
 	print()
 
 
-def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，定义一个函数，可重复调用/
+def LMOrderNo():  # -----从输入联盟订单号~计算完成整个过程，定义一个函数，可重复调用/
 	OrderNo = input("请输入要计算的联盟订单号：")
 
 	url = "http://api.test.league.xy/league/order/orderDetail?orderNo=" + OrderNo
@@ -55,12 +55,12 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 	if json()['code'] != "200":
 		print("服务器错误")
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	elif json()['data'] == {}:
 		print("未找到该联盟订单信息")
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	# 自营社交，佣金费率单位为元，且没有优惠
 	elif OrderNo == json()['data']['fid'] and json()['data']['fabbreviationName'] == '自营社交' and \
@@ -70,7 +70,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 		serviceChargeTotal = json()['data']['fskuNum'] * json()['data']['serviceCharge']
 		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	# 自营社交，佣金费率单位为元，且有优惠
 	elif OrderNo == json()['data']['fid'] and json()['data']['fabbreviationName'] == '自营社交' and \
@@ -81,7 +81,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 							 json()['data']['fskuSalePrice']
 		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	# 自营社交，佣金费率单位为%
 	elif OrderNo == json()['data']['fid'] and json()['data']['fabbreviationName'] == '自营社交' and \
@@ -93,7 +93,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 							 json()['data']['fskuSalePrice']
 		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	# API商户，佣金费率单位为元
 	elif OrderNo == json()['data']['fid'] and json()['data']['fabbreviationName'] != '自营社交' and \
@@ -106,7 +106,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 							 json()['data']['fskuNum'] - json()['data']['skuDiscountAmount']
 		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 	# API商户，佣金费率单位为%
 	elif OrderNo == json()['data']['fid'] and json()['data']['fserviceChargeUnit'] == 2:
@@ -119,7 +119,7 @@ def JudgeOrderNo():  # -----从输入联盟订单号~计算完成整个过程，
 								 'skuDiscountAmount']
 		print("服务费总额：", decimal.Decimal(value=serviceChargeTotal).quantize(exp=decimal.Decimal(value='0.00')))
 		Blanklines()
-		JudgeOrderNo()
+		LMOrderNo()
 
 
-JudgeOrderNo()
+LMOrderNo()
