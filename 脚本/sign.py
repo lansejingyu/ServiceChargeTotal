@@ -11,7 +11,7 @@ for i in sorted(dictA):  # sorted将字典进行排序，默认升序排序
 	# print(i + "=" + str(dictA[i]))
 	stringA = stringA + i + "=" + str(dictA[i]) + "&"
 
-stringSignTemp = stringA + "key=82a9ad9c048a4aa19dffa1c2506cdab4"
+stringSignTemp = stringA + "key=3fd6281724c24b6d9d3cead38ebca966"  # 不同的API商户，需要更换对应的key
 print(stringSignTemp.lower())
 
 sign = hashlib.md5()
