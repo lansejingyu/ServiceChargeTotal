@@ -79,10 +79,11 @@ for x in fpush_hand_service_charge_total:
 if forder_source == 3 and fsku_discount_amount == 0:
 	# 未使用优惠券
 	fpush_hand_service_charge_total_my = fsku_num * fservice_charge * fshare_ratio
-	print("计算推手服务费总额:", fpush_hand_service_charge_total_my)
+	print("计算推手服务费总额:",
+		  decimal.Decimal(value=fpush_hand_service_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 	fservice_charge_total_my = fsku_num * fservice_charge * (1 - fshare_ratio)
-	print("计算导购端服务费总额:", fservice_charge_total_my)
+	print("计算导购端服务费总额:", decimal.Decimal(value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 	if fpush_hand_service_charge_total == fpush_hand_service_charge_total_my and fservice_charge_total == fservice_charge_total_my:
 		print("pass")
@@ -100,7 +101,7 @@ elif forder_source == 3 and fsku_discount_amount != 0:
 
 	if fpush_hand_service_charge_total == decimal.Decimal(value=fpush_hand_service_charge_total_my).quantize(
 			exp=decimal.Decimal(value='0')) and fservice_charge_total == decimal.Decimal(
-			value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')):
+		value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')):
 		print("pass")
 	else:
 		print("fail")
