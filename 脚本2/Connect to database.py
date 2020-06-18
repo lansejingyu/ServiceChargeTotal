@@ -114,7 +114,6 @@ def LMOrderNo():
 			print("pass")
 			Blanklines()
 			LMOrderNo()
-
 		else:
 			print("fail")
 			Blanklines()
