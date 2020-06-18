@@ -10,10 +10,8 @@ mydb = mysql.connector.connect(host='mysql-0.mysql.xy-mysql.svc.cluster.xyops', 
 
 mycursor = mydb.cursor()
 
-
 def Blanklines():  # 打印一行空白行，定义一个函数
 	print()
-
 
 def LMOrderNo():
 	forder_id = input("请输入联盟订单号：")
