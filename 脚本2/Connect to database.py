@@ -118,6 +118,4 @@ def LMOrderNo():
 			print("fail")
 			Blanklines()
 			LMOrderNo()
-
-
 LMOrderNo()
