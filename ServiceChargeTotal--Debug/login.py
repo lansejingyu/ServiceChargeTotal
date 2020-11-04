@@ -23,4 +23,4 @@ if response.json()["code"] == "200":
 	token = response.json()["data"]["accessToken"]
 	# print(token)
 else:
-	print("登陆失败")
+	print("登录失败")
