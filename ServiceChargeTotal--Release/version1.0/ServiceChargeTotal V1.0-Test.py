@@ -18,7 +18,7 @@ response = requests.request("POST", url, headers=headers, data=payload)
 if response.json()["code"] == "200":
 	token = response.json()["data"]["accessToken"]
 else:
-	print("登陆失败")
+	print("登录失败")
 
 
 # ---------查询订单详情----------------
