@@ -119,5 +119,3 @@ def LMOrderNo():
 			Blanklines()
 			LMOrderNo()
 LMOrderNo()
-
-123
