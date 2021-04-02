@@ -20,4 +20,3 @@ def canshu():
 	print("sign:", sign.hexdigest())
 	canshu()
 canshu()
-123
