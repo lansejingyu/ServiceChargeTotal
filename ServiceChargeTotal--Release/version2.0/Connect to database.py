@@ -122,4 +122,4 @@ def LMOrderNo():
 			LMOrderNo()
 
 
-LMOrderNo()123
+LMOrderNo()
