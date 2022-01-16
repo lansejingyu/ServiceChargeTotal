@@ -123,4 +123,3 @@ def LMOrderNo():
 
 
 LMOrderNo()
-print()
