@@ -90,7 +90,8 @@ def LMOrderNo():
 			  decimal.Decimal(value=fpush_hand_service_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 		fservice_charge_total_my = fsku_num * fservice_charge * (1 - fshare_ratio)
-		print("计算导购端服务费总额:", decimal.Decimal(value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
+		print("计算导购端服务费总额:",
+			  decimal.Decimal(value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 		if fpush_hand_service_charge_total == fpush_hand_service_charge_total_my and fservice_charge_total == fservice_charge_total_my:
 			print("pass")
@@ -108,7 +109,8 @@ def LMOrderNo():
 			  decimal.Decimal(value=fpush_hand_service_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 		fservice_charge_total_my = fsku_pay_amount * (fservice_charge / fsku_sale_price) * (1 - fshare_ratio)
-		print("计算导购端服务费总额:", decimal.Decimal(value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
+		print("计算导购端服务费总额:",
+			  decimal.Decimal(value=fservice_charge_total_my).quantize(exp=decimal.Decimal(value='0')))
 
 		if fpush_hand_service_charge_total == decimal.Decimal(value=fpush_hand_service_charge_total_my).quantize(
 				exp=decimal.Decimal(value='0')) and fservice_charge_total == decimal.Decimal(
